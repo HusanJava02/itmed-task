@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Doctor's appointment",
+  "description": "Назначение врача",
+  "definitions": {
+    "Appointment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Идентификатор назначения, присвоенный системой core.fhir.uz"
+        },
+        "identifier": {
+          "description": "Идентификатор назначения, присвоенный другой системой (не core.fhir.uz)",
+          "type": "object",
+          "properties": {
+            "system": {
+              "type": "string",
+              "format": "url",
+              "description": "URL системы, присвоившей данный идентифицикатор"
+            },
+            "value": {
+              "description": "Собственно идентификатор",
+              "type": "string",
+              "pattern": "[1-9][0-9]*"
+            }
+          }
+        },
+        "patient": {
+          "description": "Основной бизнес идентификатор пациента, которому выписано назначение",
+          "type": "string",
+          "pattern": "[1-9][0-9]{9}"
+        },
+        "practitioner": {
+          "description": "Основной бизнес идентификатор врача, который выписал назначение",
+          "type": "string",
+          "pattern": "[1-9][0-9]{9}"
+        },
+        "organization": {
+          "description": "Основной бизнес идентификатор учреждения, куда пациент направлен для получения назначения",
+          "type": "string",
+          "pattern": "[1-9][0-9]{9}"
+        }
+      },
+      "required": [
+        "id",
+        "identifier",
+        "patient",
+        "practitioner"
+      ]
+    }
+  }
+}

@@ -1,0 +1,3 @@
+FROM postgres
+ENV POSTGRES_PASSWORD husanboy2002
+ENV POSTGRES_DB itmed
